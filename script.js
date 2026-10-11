@@ -206,7 +206,9 @@ function showContent(id, updateHash = true) {
         section.setAttribute('tabindex', '-1');
     }
 
-    if (window.innerWidth <= 768) window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Пролистываем страницу вверх при смене вкладки
+    const scrollBehavior = settings.reduceMotion ? 'auto' : 'smooth';
+    window.scrollTo({ top: 0, behavior: scrollBehavior });
 
     changeLanguage(currentLang);
 
@@ -1128,14 +1130,17 @@ document.addEventListener('DOMContentLoaded', () => {
     showContent(getSectionFromHash(), false);
 
     // Навигация — по клику, но с обновлением хэша
+    // Навигация — по клику, БЕЗ нативного скролла к якорю
     document.querySelectorAll('[data-content-link]').forEach(el => {
         el.addEventListener('click', e => {
             e.preventDefault();
             const id = el.getAttribute('data-content-link');
-            if (location.hash === '#' + id) showContent(id);
-            else location.hash = id;
+            if (location.hash !== '#' + id) {
+                history.pushState(null, '', '#' + id); // меняет URL без скролла
+            }
+            showContent(id, false); // false — не трогаем hash повторно
         });
-    });
+});
 
     // Кнопки тем / настроек
     document.querySelectorAll('.settings-option[data-theme]').forEach(btn => {

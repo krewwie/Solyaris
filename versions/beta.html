@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Начало ввысь</title>
+    <style>
+        /* Все предыдущие стили остаются без изменений */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+        
+        .main-title {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            display: flex;
+            min-height: 450px;
+        }
+        
+        .sidebar {
+            background: #f8f9fa;
+            padding: 30px;
+            min-width: 200px;
+            max-width: 200px;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 15px 20px;
+            min-width: 150px;
+            max-width: 150px;
+            background: white;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        
+        .nav-links a:hover {
+            background: #3498db;
+            color: white;
+            border-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 2.5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .logo-section h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        
+        .logo-section h3 {
+            color: #7f8c8d;
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .logo-image {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .logo-image img {
+            width: 60px;
+            height: 60px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .highlight {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        .content-text {
+            color: #2c3e50;
+            font-size: 1.2em;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 20px 0;
+        }
+        
+        .content-text-starosta {
+            color: #2c3e50;
+            font-size: 1.2em;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 20px 0;
+            margin-left: 20%;
+        }
+
+        .starosta-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #e74c3c;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .teacher-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #16a085;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .informatics-teacher-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #9b59b6;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .starosta-name {
+            color: #e74c3c;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .teacher-name {
+            color: #16a085;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .informatics-teacher-name {
+            color: #9b59b6;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .starosta-duty {
+            background: #e74c3c;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .teacher-duty {
+            background: #16a085;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .informatics-teacher-duty {
+            background: #9b59b6;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px 0;
+            font-weight: 500;
+        }
+
+        .features-list {
+            text-align: left;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .features-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            color: #e74c3c;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .teacher-features-list li:before {
+            color: #16a085;
+        }
+
+        .informatics-features-list li:before {
+            color: #9b59b6;
+        }
+
+        /* Стили для страницы учеников */
+        .students-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .student-filter-btn {
+            padding: 10px 20px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .student-filter-btn:hover {
+            background: #e9ecef;
+        }
+        
+        .student-filter-btn.active {
+            background: #3498db;
+            color: white;
+            border-color: #2980b9;
+        }
+        
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .student-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid #3498db;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .student-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #3498db, #2c3e50);
+        }
+        
+        .student-name {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .student-activities {
+            margin-top: 15px;
+        }
+        
+        .activities-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #3498db;
+            font-size: 1.1em;
+        }
+        
+        .activity-item {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .activity-item::before {
+            content: "•";
+            color: #3498db;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .no-activities {
+            color: #95a5a6;
+            font-style: italic;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .students-content {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Стили для страницы учителей */
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 30px;
+        }
+        
+        .teacher-item-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid #16a085;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+        
+        .teacher-item-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .teacher-item-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #16a085, #1abc9c);
+        }
+        
+        .teacher-item-name {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            font-weight: 600;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .teacher-subjects {
+            margin-top: 15px;
+        }
+        
+        .subjects-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #16a085;
+            font-size: 1.1em;
+        }
+        
+        .subject-item-teacher {
+            margin-bottom: 8px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .subject-item-teacher::before {
+            content: "•";
+            color: #16a085;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .teacher-cabinet {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+        }
+        
+        .cabinet-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #7f8c8d;
+            font-size: 1em;
+        }
+        
+        .cabinet-number {
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        /* Стили для страницы расписания */
+        .schedule-container {
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .schedule-days-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .schedule-day {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: left;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .day-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+            color: white;
+            border-radius: 10px;
+        }
+
+        .subject-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+            gap: 20px;
+            grid-template-columns: 1fr;
+        }
+
+        .subject-info {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .subject-header {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .subject-name-main {
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #2c3e50;
+            cursor: pointer;
+            padding: 2px 0px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+        }
+
+        .subject-name-main.red {
+            color: #e74c3c;
+        }
+
+        .subject-name-main.strikethrough {
+            color: #e74c3c;
+            text-decoration: line-through;
+        }
+
+        .subject-time {
+            font-weight: 600;
+            color: #3498db;
+            font-size: 0.95em;
+        }
+
+        .subject-names {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .subject-name {
+            font-weight: 500;
+            padding: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .group-subject {
+            padding-left: 15px;
+            border-left: 3px solid #3498db;
+            margin: 3px 0;
+            font-size: 0.95em;
+            background: #f0f8ff;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        .homework-section {
+            min-width: 370px;
+            max-width: 370px;
+        }
+
+        .homework-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            font-family: inherit;
+            resize: none;
+            min-height: 45px;
+            font-size: 1em;
+            background: white;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+
+        .group-homework {
+            margin-top: 8px;
+        }
+
+        .group-homework-title {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .homework-instruction {
+            background: #e8f4fd;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .save-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+            width: 100%;
+            font-size: 1em;
+        }
+
+        .save-btn:hover {
+            background: #2980b9;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 95%;
+            }
+            
+            .schedule-days-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .schedule-day {
+                min-width: auto;
+            }
+            
+            .teachers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .main-title {
+                font-size: 2em;
+            }
+            
+            .nav-links a {
+                padding: 12px 15px;
+            }
+
+            .students-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .teachers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+        }
+
+        .homework-instruction {
+            background: #e8f4fd;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .homework-instruction strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .homework-input::placeholder {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .edit-input {
+            width: 100%;
+            padding: 4px 6px;
+            border: 1px solid #3498db;
+            border-radius: 4px;
+            font-size: inherit;
+            font-weight: inherit;
+            font-family: inherit;
+            background: white;
+        }
+
+        .back-to-main {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1em;
+            font-weight: 500;
+
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .back-to-main i {
+            font-size: 1.1em;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-main:hover {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .back-to-main:hover i {
+            transform: translateX(-4px);
+        }
+
+        .back-to-main:active {
+            transform: translateY(0);
+        }
+
+        /* На мобильных делаем кнопку компактнее */
+        @media (max-width: 600px) {
+            .back-to-main {
+                top: 12px;
+                left: 12px;
+                padding: 20px 20px;
+                font-size: 1.2em;
+            }
+            .back-to-main span {
+                display: none; /* Оставляем только иконку */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header" id="mainHeader">
+            <h1 class="main-title">Лицейская научно-практическая конференция обучающихся «Стартап»<br>Направление: Информационное пространство и медиатехнологии</h1>
+        </div>
+        
+        <div class="content">
+            <div class="sidebar">
+                <ul class="nav-links">
+                    <li><a href="#" onclick="showContent('content1', '#2c3e50', '#3498db')">Главное</a></li>
+                    <li><a href="#" onclick="showContent('content2', '#c0392b', '#e74c3c')">Ученики</a></li>
+                    <li><a href="#" onclick="showContent('content3', '#16a085', '#1abc9c')">Учителя</a></li>
+                    <li><a href="#" onclick="showContent('content4', '#8e44ad', '#9b59b6')">Расписание</a></li>
+                </ul>
+            </div>
+            
+            <div class="main-content">
+                <!-- Контент для первой кнопки -->
+                <div id="content1" class="content-section active">
+                    <h2><span class="highlight">Солярис</span></h2>
+                    <h3>8-5 это весёлый класс состоящий из 38 учеников и доброго классного руководителя</h3>
+                    <div class="logo-image">
+                        <img src="https://solaris.gosuslugi.ru/netcat_files/generated/catalogue/275/40x40/1/9a4a05ee513367f71bc5b4c397633696.png?crop=0%3A0%3A0%3A0&hash=216083fd673597fed6681c824d23cf83&resize_mode=0&wm_m=0" alt="Логотип Солярис">
+                    </div>
+                    <h3>Добро пожаловать на сайт о 8-5 классе.</h3>
+                </div>
+
+                <!-- Контент для второй кнопки -->
+                <div id="content2" class="content-section">
+                    <div class="students-content">
+                        <h2><span class="highlight" style="color: #e74c3c;">Ученики</span></h2>
+                        <h3>Наш дружный класс - 38 учеников</h3>
+                        <div class="logo-image" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                            <img src="https://solaris.gosuslugi.ru/netcat_files/generated/catalogue/275/40x40/1/9a4a05ee513367f71bc5b4c397633696.png?crop=0%3A0%3A0%3A0&hash=216083fd673597fed6681c824d23cf83&resize_mode=0&wm_m=0" alt="Логотип">
+                        </div>
+
+                        <div class="starosta-card">
+                            <div class="starosta-name">Плотников Вадим</div>
+                            <div class="starosta-duty">Староста класса</div>
+                            <p class="content-text-starosta">
+                                Вадим - ответственный и надежный староста нашего класса. 
+                                Он ежедневно заботится о том, чтобы все ученики были в курсе 
+                                учебного процесса.
+                            </p>
+                            
+                            <ul class="features-list">
+                                <li>Ежедневно публикует актуальное расписание уроков</li>
+                                <li>Своевременно выкладывает домашние задания</li>
+                            </ul>
+                        </div>
+                        <h3>Ученики 8-5 класса и чем они занимаются</h3>
+                        <br>
+                        <div id="students-container"></div>
+                    </div>
+                </div>
+
+                <!-- Контент для третьей кнопки -->
+                <div id="content3" class="content-section">
+                    <h2><span class="highlight" style="color: #16a085;">Наши учителя</span></h2>
+                    <h3>Учителя 8-5 класса</h3>
+                    <div class="logo-image" style="background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);">
+                        <img src="https://solaris.gosuslugi.ru/netcat_files/generated/catalogue/275/40x40/1/9a4a05ee513367f71bc5b4c397633696.png?crop=0%3A0%3A0%3A0&hash=216083fd673597fed6681c824d23cf83&resize_mode=0&wm_m=0" alt="Логотип">
+                    </div>
+                    
+                    <div class="teacher-card">
+                        <div class="teacher-name">Кочкина Оксана Викторовна</div>
+                        <div class="teacher-duty">Классный руководитель</div>
+                        <p class="content-text">
+                            Оксана Викторовна - замечательный человек и наш классный руководитель. 
+                            Она обладает невероятной добротой, терпением и пониманием, которые 
+                            помогают создать в классе теплую и дружескую атмосферу.
+                        </p>
+                        
+                        <ul class="features-list teacher-features-list">
+                            <li>Всегда помогает ученикам</li>
+                            <li>Организует интересные внеклассные мероприятия</li>
+                            <li>Помогает начать что-то новое</li>
+                            <li>Создает в классе классную атмосферу</li>
+                        </ul>
+                    </div>
+                    
+                    <h3 style="margin-top: 40px;">Все учителя нашего класса</h3>
+                    <div id="teachers-container" class="teachers-grid"></div>
+                </div>
+
+                <!-- Контент для четвертой кнопки -->
+                <div id="content4" class="content-section">
+                    <h2><span class="highlight" style="color: #9b59b6;">Расписание</span></h2>
+                    <h3>Расписание уроков и домашние задания</h3>
+                    <div class="logo-image" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                        <img src="https://solaris.gosuslugi.ru/netcat_files/generated/catalogue/275/40x40/1/9a4a05ee513367f71bc5b4c397633696.png?crop=0%3A0%3A0%3A0&hash=216083fd673597fed6681c824d23cf83&resize_mode=0&wm_m=0" alt="Логотип">
+                    </div>
+                    
+                    <div class="schedule-container">
+                        <div class="schedule-days-grid" id="schedule-days-container">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showContent(contentId, color1, color2) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            const activeSection = document.getElementById(contentId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+                
+                if (contentId === 'content2') {
+                    initStudentsPage();
+                } else if (contentId === 'content3') {
+                    initTeachersPage();
+                } else if (contentId === 'content4') {
+                    initSchedulePage();
+                }
+            }
+            
+            const header = document.getElementById('mainHeader');
+            header.style.background = `linear-gradient(135deg, ${color1} 0%, ${color2} 100%)`;
+            
+            return false;
+        }
+
+        // Данные об учителях
+        const teachersData = [
+            { name: "Карпенко", subjects: ["География"], cabinet: "" },
+            { name: "Селюкова", subjects: ["Химия"], cabinet: "" },
+            { name: "Кочкина", subjects: ["Разговоры о важном"], cabinet: "" },
+            { name: "Султанова", subjects: ["Алгебра", "Вероятность и статистика", "Геометрия"], cabinet: "" },
+            { name: "Журбин", subjects: ["Физика"], cabinet: "" },
+            { name: "Беликов", subjects: ["Физическая культура"], cabinet: "" },
+            { name: "Сахаутдинова", subjects: ["Английский язык"], cabinet: "" },
+            { name: "Дикова", subjects: ["Английский язык"], cabinet: "" },
+            { name: "Ясакова", subjects: ["Информатика"], cabinet: "" },
+            { name: "Горных", subjects: ["История", "Обществознание"], cabinet: "" },
+            { name: "Нефедова", subjects: ["Читательская грамотность", "Русский язык", "Литература"], cabinet: "" },
+            { name: "Нифталиева", subjects: ["Биология"], cabinet: "" },
+            { name: "Свотин", subjects: ["ОБЗР"], cabinet: "" },
+            { name: "Балыкова", subjects: ["Музыка"], cabinet: "" },
+            { name: "Шиловский", subjects: ["Технология"], cabinet: "" },
+            { name: "Царева", subjects: ["Технология"], cabinet: "" }
+        ];
+
+        function initTeachersPage() {
+            const container = document.getElementById('teachers-container');
+            container.innerHTML = '';
+            
+            teachersData.forEach(teacher => {
+                const card = document.createElement('div');
+                card.className = 'teacher-item-card';
+                
+                const colors = [
+                    '#16a085', '#1abc9c', '#2ecc71', '#27ae60',
+                    '#3498db', '#2980b9', '#9b59b6', '#8e44ad',
+                    '#f39c12', '#d35400', '#e74c3c', '#c0392b',
+                    '#7f8c8d', '#34495e', '#2c3e50'
+                ];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                card.style.borderTopColor = randomColor;
+                
+                card.innerHTML = `
+                    <div class="teacher-item-name">${teacher.name}</div>
+                    <div class="teacher-subjects">
+                        <div class="subjects-title">Предметы:</div>
+                        ${teacher.subjects.map(subject => 
+                            `<div class="subject-item-teacher">${subject}</div>`
+                        ).join('')}
+                    </div>
+                    <div class="teacher-cabinet">
+                        <div class="cabinet-title">Кабинет:</div>
+                        <div class="cabinet-number">${teacher.cabinet || 'Не указан'}</div>
+                    </div>
+                `;
+                
+                container.appendChild(card);
+            });
+        }
+
+        const scheduleData = {
+            monday: {
+                title: "Понедельник",
+                subjects: [
+                    { time: "8:00-8:40", names: ["География (2 Г408)"], homework: ""},
+                    { time: "8:50-9:30", names: ["Химия (2 Г410)"], homework: ""},
+                    { time: "9:40-10:20", names: ["Разговоры о важном (2 Г104)"], homework: ""},
+                    { time: "10:40-11:20", names: ["Алгебра (2 Г203)"], homework: ""},
+                    { time: "11:40-12:20", names: ["Вероятность и статистика (2 Г203)"], homework: ""},
+                    { time: "12:35-13:15", names: ["Технология (Девочки) (2 Г112)ㅤㅤㅤНет занятий (Мальчики)"], homework: ""}
+                ]
+            },
+            tuesday: {
+                title: "Вторник",
+                subjects: [
+                    { time: "8:00-8:40", names: ["Физика (2 Г209)"], homework: ""},
+                    { time: "8:50-9:30", names: ["Геометрия (2 Г203)"], homework: ""},
+                    { time: "9:40-10:20", names: ["Физическая культура (2 Спортзал)"], homework: ""},
+                    { time: "10:40-11:20", names: ["Английский язык (1 группа) (2 Г402) Английский язык (2 группа) (2 Г202)"], homework: ""},
+                    { time: "11:40-12:20", names: ["Английский язык (1 группа) (2 Г402) Информатика (2 группа) (2 Г111)"], homework: ""},
+                    { time: "12:35-13:15", names: ["История (2 Г207)"], homework: ""},
+                    { time: "13:35-14:15", names: ["Читательская грамотность (2 Г303)"], homework: ""}
+                ]
+            },
+            wednesday: {
+                title: "Среда",
+                subjects: [
+                    { time: "8:00-8:40", names: ["Русский язык (2 Г303)"], homework: ""},
+                    { time: "8:50-9:30", names: ["Биология (2 Г409)"], homework: ""},
+                    { time: "9:40-10:20", names: ["ОБЗР (Д Юнармии)"], homework: ""},
+                    { time: "10:40-11:20", names: ["Алгебра (2 Г203)"], homework: ""},
+                    { time: "11:40-12:20", names: ["Литература (2 Г303)"], homework: ""},
+                    { time: "12:35-13:15", names: ["Музыка (2 Г411)"], homework: ""},
+                    { time: "13:35-14:15", names: ["Литература (2 Г303)"], homework: ""}
+                ]
+            },
+            thursday: {
+                title: "Четверг",
+                subjects: [
+                    { time: "8:00-8:40", names: ["Алгебра (2 Г203)"], homework: ""},
+                    { time: "8:50-9:30", names: ["Русский язык (2 Г303)"], homework: ""},
+                    { time: "9:40-10:20", names: ["Физика (2 Г209)"], homework: ""},
+                    { time: "10:40-11:20", names: ["Химия (2 Г410)"], homework: ""},
+                    { time: "11:40-12:20", names: ["Информатика (1 группа) (2 Г111) Английский язык (2 группа) (2 Г202)"], homework: ""},
+                    { time: "12:35-13:15", names: ["Геометрия (2 Г203)"], homework: ""},
+                    { time: "13:35-14:15", names: ["Алгебра (2 Г203)"], homework: ""},
+                    { time: "14:25-15:05", names: ["Нет занятий (Девочки)ㅤㅤㅤТехнология (Мальчики) (2 Г107)"], homework: ""}
+                ]
+            },
+            friday: {
+                title: "Пятница",
+                subjects: [
+                    { time: "8:00-8:40", names: ["Английский язык (1 группа) (2 Г402) Английский язык (2 группа) (2 Г202)"], homework: ""},
+                    { time: "8:50-9:30", names: ["История (2 Г207)"], homework: ""},
+                    { time: "9:40-10:20", names: ["Обществознание (2 Г207)"], homework: ""},
+                    { time: "10:40-11:20", names: ["География (2 Г408)"], homework: ""},
+                    { time: "11:40-12:20", names: ["Биология (2 Г409)"], homework: ""},
+                    { time: "12:35-13:15", names: ["Физическая культура (2 Спортзал)"], homework: ""},
+                    { time: "13:35-14:15", names: ["Русский язык (2 Г303)"], homework: ""}
+                ]
+            }
+        };
+
+        function applySubjectStyle(element, text) {
+            element.classList.remove('red', 'strikethrough');
+            
+            const originalValue = element.getAttribute('data-original') || text;
+            
+            if (text.startsWith('-')) {
+                element.classList.add('red', 'strikethrough');
+                element.textContent = text.substring(1).trim();
+            } 
+
+            else if (text !== originalValue && text.trim() !== '') {
+                element.classList.add('red');
+                element.textContent = text;
+            }
+
+            else {
+                element.textContent = text;
+                element.classList.remove('red');
+            }
+            
+            element.setAttribute('data-original', text);
+        }
+
+        function createEditableSubject(subjectName, day, index) {
+            const element = document.createElement('div');
+            element.className = 'subject-name-main';
+            element.textContent = subjectName;
+            element.setAttribute('data-original', subjectName);
+            
+            applySubjectStyle(element, subjectName);
+            
+            element.addEventListener('click', function editHandler() {
+                const currentValue = this.textContent;
+                const originalValue = this.getAttribute('data-original');
+                
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = currentValue;
+                input.className = 'edit-input';
+                
+                this.parentNode.replaceChild(input, this);
+                input.focus();
+                input.select();
+                
+                function finishEdit() {
+                    const newValue = input.value.trim();
+                    const parent = input.parentNode;
+                    
+                    const newElement = document.createElement('div');
+                    newElement.className = 'subject-name-main';
+                    newElement.setAttribute('data-original', originalValue);
+                    
+                    applySubjectStyle(newElement, newValue);
+                    
+                    parent.replaceChild(newElement, input);
+                    
+                    if (scheduleData[day] && scheduleData[day].subjects[index]) {
+                        scheduleData[day].subjects[index].names[0] = newValue;
+                    }
+                    
+                    newElement.addEventListener('click', editHandler);
+                }
+                
+                input.addEventListener('blur', finishEdit);
+            });
+            
+            return element;
+        }
+
+        function autoResizeTextarea(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight) + 'px';
+        }
+
+        function initSchedulePage() {
+            const container = document.getElementById('schedule-days-container');
+            container.innerHTML = '';
+
+            Object.keys(scheduleData).forEach(day => {
+                const dayData = scheduleData[day];
+                const dayElement = document.createElement('div');
+                dayElement.className = 'schedule-day';
+                
+                let subjectsHTML = '';
+                
+                dayData.subjects.forEach((subject, index) => {
+                    const currentHomework = subject.homework;
+                    const homeworkPlaceholder = '';
+                    
+                    subjectsHTML += `
+                        <div class="subject-item">
+                            <div class="subject-info">
+                                <div class="subject-header">
+                                    <div class="subject-name-main-wrapper"></div>
+                                    <div class="subject-time">${subject.time}</div>
+                                </div>
+                                <div class="subject-names">
+                                    ${subject.names.slice(1).map(name => 
+                                        `<div class="group-subject">${name}</div>`
+                                    ).join('')}
+                                </div>
+                            </div>
+                            <div class="homework-section">
+                                <textarea class="homework-input" placeholder="${homeworkPlaceholder}" data-day="${day}" data-index="${index}">${currentHomework}</textarea>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                dayElement.innerHTML = `
+                    <div class="day-title">${dayData.title}</div>
+                    ${subjectsHTML}
+                `;
+                container.appendChild(dayElement);
+                
+                dayData.subjects.forEach((subject, index) => {
+                    const wrapper = dayElement.querySelectorAll('.subject-name-main-wrapper')[index];
+                    if (wrapper) {
+                        const editableElement = createEditableSubject(subject.names[0], day, index);
+                        wrapper.appendChild(editableElement);
+                    }
+                });
+
+                const textareas = dayElement.querySelectorAll('.homework-input');
+                textareas.forEach(textarea => {
+                    autoResizeTextarea(textarea);
+                    
+                    textarea.addEventListener('input', function() {
+                        autoResizeTextarea(this);
+                    });
+                });
+            });
+        }
+
+        function getSavedHomework(day, index, group = null) {
+            const savedHomework = localStorage.getItem(`homework-${day}`);
+            return '';
+        }
+
+        const students = [
+            {
+                id: 0,
+                name: "А. Вячеслав",
+                activities: ["ДВВС - бассейн", "ДШИ №20, кларнет"]
+            },
+            {
+                id: 1,
+                name: "А. Дарина",
+                activities: ["нет"]
+            },
+            {
+                id: 2,
+                name: "А. Глеб",
+                activities: ["нет"]
+            },
+            {
+                id: 3,
+                name: "А. Самир",
+                activities: ["Солярис-Казачий клуб «Великие пластуны»"]
+            },
+            {
+                id: 4,
+                name: "Б. Ярослава",
+                activities: ["Танцы - \"В ТАНЦАХ\" танцевальный центр"]
+            },
+            {
+                id: 5,
+                name: "Б. Джемма",
+                activities: ["Солярис - \"Стильная штучка\" кружок вязания"]
+            },
+            {
+                id: 6,
+                name: "Б. Дмитрий",
+                activities: ["нет"]
+            },
+            {
+                id: 7,
+                name: "Г. Мираз",
+                activities: ["нет"]
+            },
+            {
+                id: 8,
+                name: "Г. Виолетта",
+                activities: ["нет"]
+            },
+            {
+                id: 9,
+                name: "Г. Алёна",
+                activities: ["МБУ ДОЛ \"ДШИН №11\" (на базе \"Солярис\") - рисование"]
+            },
+            {
+                id: 10,
+                name: "Е. Егор",
+                activities: ["Спортивный клуб \"Ирбис\", секция каратэ"]
+            },
+            {
+                id: 11,
+                name: "Е. Тимофей",
+                activities: ["Айкидо: Антонова, 27", "Лёгкая атлетика - Школа олимпийского резерва ст. Динамо"]
+            },
+            {
+                id: 12,
+                name: "З. Виктория",
+                activities: ["Танцы - \"В ТАНЦАХ\" танцевальный центр", "\"Орлята\" - \"Движение первых\""]
+            },
+            {
+                id: 13,
+                name: "К. Мария",
+                activities: ["Солярис - музыкальный коллектив Черная Мьюзик (центр детского творчества Кировского района)", "Водное поло - \"ДВВС\"", "Вокал - \"Территория детства\" ул. Антонова"]
+            },
+            {
+                id: 14,
+                name: "К. Виктория",
+                activities: ["Волонтерский отряд Лицея \"Апельсин\""]
+            },
+            {
+                id: 15,
+                name: "М. Алимжан",
+                activities: ["Солярис - борьба \"ММА\""]
+            },
+            {
+                id: 16,
+                name: "М. Алексей",
+                activities: ["Футбольная школа \"Форвард\""]
+            },
+            {
+                id: 17,
+                name: "М. Мария",
+                activities: ["Танцевальный коллектив «Лигр»", "Солнечный фитнес"]
+            },
+            {
+                id: 18,
+                name: "М. Зара",
+                activities: ["Клуб \"Олимп\" - бокс"]
+            },
+            {
+                id: 19,
+                name: "М. Елизавета",
+                activities: ["Спортивный комплекс Рекорд-волейбол"]
+            },
+            {
+                id: 20,
+                name: "Н. Анастасия",
+                activities: ["нет"]
+            },
+            {
+                id: 21,
+                name: "П. Надежда",
+                activities: ["Дворец водных видов спорта - плавание"]
+            },
+            {
+                id: 22,
+                name: "П. Михаил",
+                activities: ["Солярис-футбол, бег", "Ф.К\"ЮНИКС\" - футбол"]
+            },
+            {
+                id: 23,
+                name: "П. Вадим",
+                activities: ["Волонтерский отряд Лицея \"Апельсин\"", "Солярис - Клуб любителей китайского языка и культуры \"Китайский самовар\""]
+            },
+            {
+                id: 24,
+                name: "П. Александр",
+                activities: ["нет"]
+            },
+            {
+                id: 25,
+                name: "Р. Алёна",
+                activities: ["нет"]
+            },
+            {
+                id: 26,
+                name: "Р. Александр",
+                activities: ["Солярис - Казачий клуб \"Волжские пластуны\""]
+            },
+            {
+                id: 27,
+                name: "С. Артём",
+                activities: ["нет"]
+            },
+            {
+                id: 28,
+                name: "С. Ева",
+                activities: ["нет"]
+            },
+            {
+                id: 29,
+                name: "Т. Ярослав",
+                activities: ["Программирование (в онлайн)"]
+            },
+            {
+                id: 30,
+                name: "Т. Матвей",
+                activities: ["нет"]
+            },
+            {
+                id: 31,
+                name: "Т. Ильнара",
+                activities: ["Бассейн - плавание", "Танцы (на улице Академика Семёнова)"]
+            },
+            {
+                id: 32,
+                name: "Ф. Ева",
+                activities: ["ДВВС - бассейн"]
+            },
+            {
+                id: 33,
+                name: "Х. Ксения",
+                activities: ["Волонтерский отряд Лицея \"Апельсин\"", "\"Стильная штучка\" кружок вязания"]
+            },
+            {
+                id: 34,
+                name: "Ч. Алиса",
+                activities: ["нет"]
+            },
+            {
+                id: 35,
+                name: "Ч. Давид",
+                activities: ["Футбол (Солярис, 2 корпус)", "«Форвард» F1"]
+            },
+            {
+                id: 36,
+                name: "Ч. Вероника",
+                activities: ["Солярис - Движение первых"]
+            },
+            {
+                id: 37,
+                name: "Я. Никита",
+                activities: ["нет"]
+            }
+        ];
+
+        function displayStudents() {
+            const container = document.getElementById('students-container');
+            container.innerHTML = '';
+            
+            const studentsGrid = document.createElement('div');
+            studentsGrid.className = 'students-grid';
+            
+            students.forEach(student => {
+                const card = document.createElement('div');
+                card.className = 'student-card';
+                
+                const colors = [
+                    '#3498db', '#e74c3c', '#2ecc71', '#f39c12', 
+                    '#9b59b6', '#1abc9c', '#d35400', '#34495e'
+                ];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                card.style.borderTopColor = randomColor;
+                
+                card.innerHTML = `
+                    <div class="student-name">${student.name}</div>
+                    <div class="student-activities">
+                        <div class="activities-title">Кружки и секции:</div>
+                        ${student.activities[0] === 'нет' 
+                            ? '<div class="no-activities">Не посещает дополнительные занятия</div>' 
+                            : student.activities.map(activity => 
+                                `<div class="activity-item">${activity}</div>`
+                              ).join('')
+                        }
+                    </div>
+                `;
+                
+                studentsGrid.appendChild(card);
+            });
+            
+            container.appendChild(studentsGrid);
+        }
+
+        function initStudentsPage() {
+            displayStudents();
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.getElementById('content4').classList.contains('active')) {
+                initSchedulePage();
+            }
+        });
+    </script>
+    
+    <!-- Кнопка возврата на главный сайт -->
+    <a href="../index.html" class="back-to-main" aria-label="Вернуться на главную">
+        <i class="fas fa-arrow-left"></i>
+        <span>На главную</span>
+    </a>
+</body>
+</html>

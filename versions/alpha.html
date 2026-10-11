@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Начало ввысь | Солярис</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .main-title {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            display: flex;
+            min-height: 400px;
+        }
+        
+        .sidebar {
+            background: #f8f9fa;
+            padding: 30px;
+            width: 300px;
+            border-right: 1px solid #e9ecef;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: 15px;
+        }
+        
+        .nav-links a {
+            display: block;
+            padding: 15px 20px;
+            background: white;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav-links a:hover {
+            background: #3498db;
+            color: white;
+            border-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .logo-section h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        
+        .logo-section h3 {
+            color: #7f8c8d;
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        .logo-image {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
+        }
+        
+        .logo-image img {
+            width: 60px;
+            height: 60px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .highlight {
+            color: #3498db;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+            }
+            
+            .main-title {
+                font-size: 2em;
+            }
+            
+            .nav-links a {
+                padding: 12px 15px;
+            }
+        }
+
+        .back-to-main {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 9999;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1em;
+            font-weight: 500;
+
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .back-to-main i {
+            font-size: 1.1em;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-main:hover {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .back-to-main:hover i {
+            transform: translateX(-4px);
+        }
+
+        .back-to-main:active {
+            transform: translateY(0);
+        }
+
+        /* На мобильных делаем кнопку компактнее */
+        @media (max-width: 600px) {
+            .back-to-main {
+                top: 12px;
+                left: 12px;
+                padding: 20px 20px;
+                font-size: 1.2em;
+            }
+            .back-to-main span {
+                display: none; /* Оставляем только иконку */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="main-title">Начало ввысь</h1>
+            <p class="subtitle">Образовательная платформа</p>
+        </div>
+        
+        <div class="content">
+            <div class="sidebar">
+                <ul class="nav-links">
+                    <li><a href="1.html">Class 11 05</a></li>
+                    <li><a href="2.html">Class 11 05</a></li>
+                    <li><a href="3.html">Class 11 05</a></li>
+                    <li><a href="4.html">Class 11 05</a></li>
+                    <li><a href="5.html" style="background: #e74c3c; color: white;">Регистрация</a></li>
+                </ul>
+            </div>
+            
+            <div class="main-content">
+                <div class="logo-section">
+                    <h2><span class="highlight">Солярис</span></h2>
+                    <h3>Второй корпус Солярис</h3>
+                    <div class="logo-image">
+                        <img src="https://solaris.gosuslugi.ru/netcat_files/generated/catalogue/275/40x40/1/9a4a05ee513367f71bc5b4c397633696.png?crop=0%3A0%3A0%3A0&hash=216083fd673597fed6681c824d23cf83&resize_mode=0&wm_m=0" alt="Логотип Солярис">
+                    </div>
+                    <p style="color: #7f8c8d; margin-top: 20px; font-size: 1.1em;">
+                        Добро пожаловать в образовательное пространство нового поколения
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка возврата на главный сайт -->
+    <a href="../index.html" class="back-to-main" aria-label="Вернуться на главную">
+        <i class="fas fa-arrow-left"></i>
+        <span>На главную</span>
+    </a>
+</body>
+</html>

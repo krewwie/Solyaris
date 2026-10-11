@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Начало ввысь</title>
+    <meta name="description" content="Сайт 9-5 класса «Солярис»: расписание, домашние задания, учителя, ученики, книги на лето и подготовка к ОГЭ.">
+    <meta name="theme-color" content="#3498db">
+    <link rel="icon" href="images/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="content">
+        <div class="sideblock">
+            <div class="sidebar">
+                <ul class="nav-links">
+                    <li><a href="#main" data-content-link="main"><i class="fas fa-house"></i><span data-key="nav_main">Главное</span></a></li>
+                    <li><a href="#students" data-content-link="students"><i class="fas fa-user-graduate"></i><span data-key="nav_students">Ученики</span></a></li>
+                    <li><a href="#teachers" data-content-link="teachers"><i class="fas fa-chalkboard-user"></i><span data-key="nav_teachers">Учителя</span></a></li>
+                    <li><a href="#schedule" data-content-link="schedule"><i class="fas fa-calendar-days"></i><span data-key="nav_schedule">Расписание</span></a></li>
+                    <li><a href="#textbooks" data-content-link="textbooks"><i class="fas fa-book"></i><span data-key="nav_textbooks">Учебники</span></a></li>
+                    <li><a href="#books" data-content-link="books"><i class="fas fa-book-open"></i><span data-key="nav_books">Книги на лето</span></a></li>
+                    <li><a href="#oge" data-content-link="oge"><i class="fas fa-graduation-cap"></i><span data-key="nav_oge">ОГЭ</span></a></li>
+                </ul>
+                <button class="settings-btn" data-content-link="settings" type="button">
+                    <i class="fas fa-gear"></i>
+                    <span data-key="settings">Настройки</span>
+                </button>
+                <div class="qr-panel">
+                    <div class="qr-panel-title" data-key="qr_title">Ссылка на сайт</div>
+                    <div class="qr-panel-code"></div>
+                    <button class="qr-close-btn" type="button" aria-label="Закрыть QR">×</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="main" class="content-section active">
+                <h2 tabindex="-1"><span class="highlight" data-key="solyaris">Солярис</span></h2>
+                <h3 data-key="upper_title">"9-5" — это весёлый класс, состоящий из 38 учеников и доброго классного руководителя</h3>
+                <div class="logo-image">
+                    <img src="images/Exclude.png" alt="Логотип Солярис">
+                </div>
+                <h3 data-key="welcome_subtitle">Добро пожаловать на сайт о "9-5" классе.</h3>
+            </div>
+
+            <div id="students" class="content-section">
+                <div class="students-content">
+                    <h2 tabindex="-1"><span class="highlight" style="color: #e74c3c;" data-key="students">Ученики</span></h2>
+                    <h3 data-key="class">Наш дружный класс - 38 учеников</h3>
+                    <div class="logo-image" style="background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);">
+                        <img src="images/Exclude.png" alt="Логотип">
+                    </div>
+                    <div class="starosta-card">
+                        <div class="starosta-name" data-key="starosta_name">Плотников Вадим</div>
+                        <div class="starosta-duty" data-key="starosta_duty">Староста класса</div>
+                        <p class="content-text-starosta" data-key="starosta_description">
+                            Вадим - ответственный и надежный староста нашего класса.
+                        </p>
+                        <ul class="features-list">
+                            <p data-key="starosta_features">Ежедневно публикует актуальное расписание уроков</p>
+                            <p data-key="starosta_features2">Своевременно выкладывает домашние задания</p>
+                        </ul>
+                    </div>
+                    <h3 class="h3-pupils" data-key="students_work">Ученики 9-5 класса и чем они занимаются</h3>
+                    <br>
+                    <div class="filter-bar">
+                        <input type="search" id="students-search" class="filter-search" placeholder="Поиск по имени…" data-placeholder-key="search_students" aria-label="Поиск учеников">
+                        <select id="students-activity-filter" class="filter-select" aria-label="Фильтр по кружкам">
+                            <option value="" data-key="filter_all_activities">Все кружки</option>
+                        </select>
+                    </div>
+                    <div id="students-container"></div>
+                </div>
+            </div>
+
+            <div id="teachers" class="content-section">
+                <h2 tabindex="-1"><span class="highlight" style="color: #16a085;" data-key="teachers">Учителя 9-5 класса</span></h2>
+                <h3 data-key="class_teachers">Учителя нашего класса</h3>
+                <div class="logo-image" style="background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);">
+                    <img src="images/Exclude.png" alt="Логотип">
+                </div>
+                <div class="teacher-card">
+                    <div class="class-teacher-name" data-key="class_teacher_name">Кочкина Оксана Викторовна</div>
+                    <div class="teacher-duty" data-key="teacher_duty">Классный руководитель</div>
+                    <p class="content-text" data-key="content_text">
+                        Оксана Викторовна - замечательный человек и наш классный руководитель.
+                    </p>
+                    <ul class="features-list teacher-features-list">
+                        <p data-key="teacher_features">Всегда помогает ученикам</p>
+                        <p data-key="teacher_features2">Организует интересные внеклассные мероприятия</p>
+                        <p data-key="teacher_features3">Помогает начать что-то новое</p>
+                        <p data-key="teacher_features4">Создает в классе классную атмосферу</p>
+                    </ul>
+                </div>
+                <h3 style="margin-top: 40px;" data-key="teacher_subjects">Учителя 9-5 класса и что они ведут</h3>
+                <div class="filter-bar">
+                    <input type="search" id="teachers-search" class="filter-search" placeholder="Поиск по имени…" data-placeholder-key="search_teachers" aria-label="Поиск учителей">
+                    <select id="teachers-subject-filter" class="filter-select" aria-label="Фильтр по предмету">
+                        <option value="" data-key="filter_all_subjects">Все предметы</option>
+                    </select>
+                </div>
+                <div id="teachers-container" class="teachers-grid"></div>
+            </div>
+
+            <div id="schedule" class="content-section">
+                <h2 tabindex="-1"><span class="highlight" style="color: #9b59b6;" data-key="schedule">Расписание</span></h2>
+                <h3 data-key="schedule_lessons">Расписание уроков и домашние задания</h3>
+                <div class="logo-image" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                    <img src="images/Exclude.png" alt="Логотип">
+                </div>
+
+                <div class="schedule-controls">
+                    <button id="edit-mode-toggle" class="schedule-ctrl-btn edit-mode-btn" type="button" aria-pressed="false">
+                        <i class="fas fa-pen"></i>
+                        <span data-key="edit_mode">Режим редактирования</span>
+                    </button>
+                    <button id="reset-schedule-btn" class="schedule-ctrl-btn reset-btn" type="button">
+                        <i class="fas fa-rotate-left"></i>
+                        <span data-key="reset_schedule">Сбросить</span>
+                    </button>
+                    <span id="save-indicator" class="save-indicator" role="status" aria-live="polite"></span>
+                </div>
+                <p class="schedule-hint" data-key="schedule_local_hint">
+                    <i class="fas fa-info-circle"></i>
+                    Изменения сохраняются только в вашем браузере и не влияют на других пользователей.
+                </p>
+
+                <div class="schedule-container" id="schedule-days-container"></div>
+                <div class="schedule-navigation">
+                    <button class="nav-button prev" type="button" data-key="prev_day_tran">← Предыдущий день</button>
+                    <div class="current-day-info" id="current-day-info">Понедельник</div>
+                    <button class="nav-button next" type="button" data-key="next_day_tran">Следующий день →</button>
+                </div>
+            </div>
+
+            <div id="textbooks" class="content-section">
+                <h2 tabindex="-1"><span class="highlight" style="color: #e67e22;" data-key="textbooks">Учебники</span></h2>
+                <h3 data-key="education_materials">Учебные материалы по предметам</h3>
+                <div class="logo-image" style="background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);">
+                    <img src="images/Exclude.png" alt="Логотип">
+                </div>
+                <div id="subjects-container"></div>
+            </div>
+
+            <div id="books" class="content-section">
+                <h2 tabindex="-1"><span class="highlight" style="color: #e84393;" data-key="summer_for_books">Книги на лето</span></h2>
+                <h3 data-key="summer_books">Список литературы для чтения</h3>
+                <div class="logo-image" style="background: linear-gradient(135deg, #e84393 0%, #c2185b 100%);">
+                    <img src="images/Exclude.png" alt="Логотип">
+                </div>
+
+                <div class="books-toolbar">
+                    <input type="search" id="books-search" class="filter-search" placeholder="Поиск по названию или автору…" data-placeholder-key="search_books" aria-label="Поиск книг">
+                    <div class="books-filters" role="group" aria-label="Фильтр книг">
+                        <button type="button" class="books-filter-btn active" data-filter="all" data-key="filter_all">Все</button>
+                        <button type="button" class="books-filter-btn" data-filter="read" data-key="filter_read">Прочитанные</button>
+                        <button type="button" class="books-filter-btn" data-filter="unread" data-key="filter_unread">Непрочитанные</button>
+                    </div>
+                    <button type="button" id="reset-books-btn" class="schedule-ctrl-btn reset-btn">
+                        <i class="fas fa-rotate-left"></i>
+                        <span data-key="reset_marks">Сбросить отметки</span>
+                    </button>
+                </div>
+
+                <div id="summer-books-container"></div>
+            </div>
+
+            <div id="oge" class="content-section">
+                <h2 tabindex="-1"><span class="highlight" style="color: #4caf1e;" data-key="oge_title">Подготовка к ОГЭ</span></h2>
+                <h3 data-key="oge_subtitle">Ресурсы для успешной сдачи экзаменов</h3>
+                <div class="logo-image" style="background: linear-gradient(135deg, #60da25 0%, #5ebd42 100%);">
+                    <img src="images/Exclude.png" alt="Логотип">
+                </div>
+
+                <div class="oge-official">
+                    <h3 style="margin-bottom: 20px;" data-key="oge_official_title">Официальные документы и банки заданий</h3>
+                    <div class="settings-options oge-links-grid">
+                        <a href="https://fipi.ru/oge/demoversii-specifikacii-kodifikatory" target="_blank" rel="noopener" class="settings-option">
+                            <i class="fas fa-file-contract"></i>
+                            <span data-key="oge_fipi_docs">Демоверсии, спецификации, кодификаторы ФИПИ</span>
+                        </a>
+                        <a href="https://fipi.ru/oge/otkrytyy-bank-zadaniy-oge" target="_blank" rel="noopener" class="settings-option">
+                            <i class="fas fa-database"></i>
+                            <span data-key="oge_fipi_bank">Открытый банк заданий ОГЭ</span>
+                        </a>
+                        <a href="https://obrnadzor.gov.ru/gia/" target="_blank" rel="noopener" class="settings-option">
+                            <i class="fas fa-building-columns"></i>
+                            <span data-key="oge_rosobrnadzor">Раздел «ГИА» на сайте Рособрнадзора</span>
+                        </a>
+                        <a href="https://obrnadzor.gov.ru/navigator-gia/" target="_blank" rel="noopener" class="settings-option">
+                            <i class="fas fa-compass"></i>
+                            <span data-key="oge_navigator">Навигатор ГИА</span>
+                        </a>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 40px;" data-key="oge_subjects_title">Ресурсы по предметам</h3>
+                <div id="oge-subjects-container" class="subjects-grid"></div>
+            </div>
+
+            <div id="settings" class="content-section">
+                <h2 tabindex="-1"><span class="highlight" style="color: #34495e;" data-key="settings">Настройки</span></h2>
+                <h3 data-key="settings_subtitle">Персонализация сайта</h3>
+                <div class="logo-image" style="background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);">
+                    <img src="images/Exclude.png" alt="Логотип">
+                </div>
+
+                <div class="settings-tab">
+                    <section class="settings-section">
+                        <h3><i class="fas fa-palette"></i><span data-key="theme_setting">Тема</span></h3>
+                        <div class="settings-options">
+                            <button class="settings-option" type="button" data-theme="light"><i class="fas fa-sun"></i><span data-key="theme_light">Светлая</span></button>
+                            <button class="settings-option" type="button" data-theme="dark"><i class="fas fa-moon"></i><span data-key="theme_dark">Тёмная</span></button>
+                            <button class="settings-option" type="button" data-theme="system"><i class="fas fa-desktop"></i><span data-key="theme_system">Системная</span></button>
+                        </div>
+                    </section>
+
+                    <section class="settings-section">
+                        <h3><i class="fas fa-language"></i><span data-key="language_setting">Язык</span></h3>
+                        <div class="settings-options" id="language-options"></div>
+                    </section>
+
+                    <section class="settings-section">
+                        <h3><i class="fas fa-universal-access"></i><span data-key="accessibility">Специальные возможности</span></h3>
+                        <div class="settings-toggles">
+                            <button type="button" class="settings-toggle-row" role="switch" aria-checked="false" data-setting="largeFont">
+                                <span class="settings-toggle-label"><i class="fas fa-text-height"></i><span data-key="large_font">Увеличенный шрифт</span></span>
+                                <span class="settings-toggle"></span>
+                            </button>
+                            <button type="button" class="settings-toggle-row" role="switch" aria-checked="false" data-setting="highContrast">
+                                <span class="settings-toggle-label"><i class="fas fa-circle-half-stroke"></i><span data-key="high_contrast">Высокая контрастность</span></span>
+                                <span class="settings-toggle"></span>
+                            </button>
+                            <button type="button" class="settings-toggle-row" role="switch" aria-checked="false" data-setting="reduceMotion">
+                                <span class="settings-toggle-label"><i class="fas fa-wind"></i><span data-key="reduce_motion">Уменьшить анимации</span></span>
+                                <span class="settings-toggle"></span>
+                            </button>
+                            <button type="button" class="settings-toggle-row" role="switch" aria-checked="false" data-setting="mobileNavOnDesktop">
+                                <span class="settings-toggle-label"><i class="fas fa-mobile-screen-button"></i><span data-key="mobile_nav_setting">Мобильная навигация на ПК</span></span>
+                                <span class="settings-toggle"></span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="settings-section">
+                        <h3><i class="fas fa-clock-rotate-left"></i><span data-key="old_version_setting">Версии сайта</span></h3>
+                        <div class="settings-options" style="grid-template-columns: 1fr;">
+                            <a href="versions/alpha.html" class="settings-option" style="text-decoration: none;">
+                                <i class="fas fa-arrow-left"></i>
+                                <span data-key="go_to_old_version">Перейти в первую версию сайта</span>
+                            </a>
+                            <a href="versions/beta.html" class="settings-option" style="text-decoration: none;">
+                                <i class="fas fa-arrow-left"></i>
+                                <span data-key="go_to_old_version_2">Перейти на итоговую версию сайта</span>
+                            </a>
+                        </div>
+                    </section>
+
+                    <!--
+                    <section class="settings-section">
+                        <h3><i class="fas fa-circle-info"></i><span>О сайте</span></h3>
+                        <div class="settings-options" style="grid-template-columns: 1fr;">
+                            <a href="#authors" class="settings-option" style="text-decoration: none;">
+                                <i class="fas fa-users"></i>
+                                <span data-key="authors_of_project">Авторы проекта</span>
+                            </a>
+                        </div>
+                    </section>
+                    -->
+
+                    <div class="settings-footer">
+                        <span data-key="footer_made">Солярис · 9-5</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="authors" class="content-section">
+                <h2 tabindex="-1"><span class="highlight" style="color: #95a5a6;" data-key="authors_of_project">Авторы проекта</span></h2>
+                <h3 data-key="authors_of_site">Люди, которые создали этот сайт</h3>
+                <div class="logo-image" style="background: linear-gradient(135deg, #bdc3c7 0%, #7f8c8d 100%);">
+                    <img src="images/Solarislogoorig.png" alt="Логотип">
+                </div>
+                <div id="authors-container" class="authors-grid">
+                    <div class="author-card">
+                        <div class="author-name" data-key="author_vlad">Плотников Вадим</div>
+                        <div class="author-contributions">
+                            <div class="contributions-title" data-key="project_contribution">Вклад в проект:</div>
+                            <div class="contribution-item" data-key="project_contribution_vlad_1">Разработка HTML-структуры</div>
+                            <div class="contribution-item" data-key="project_contribution_vlad_2">Создание дизайна в CSS</div>
+                            <div class="contribution-item" data-key="project_contribution_vlad_3">Написание JS-кода</div>
+                        </div>
+                    </div>
+                    <div class="author-card">
+                        <div class="author-name" data-key="author_egor">Егоров Егор</div>
+                        <div class="author-contributions">
+                            <div class="contributions-title" data-key="project_contribution">Вклад в проект:</div>
+                            <div class="contribution-item" data-key="project_contribution_egor_1">Да</div>
+                            <div class="contribution-item" data-key="project_contribution_egor_2">Хз</div>
+                            <div class="contribution-item" data-key="project_contribution_egor_3">Интересно</div>
+                        </div>
+                    </div>
+                    <div class="author-card">
+                        <div class="author-name" data-key="author_vyacheslav">Акопян Вячеслав</div>
+                        <div class="author-contributions">
+                            <div class="contributions-title" data-key="project_contribution">Вклад в проект:</div>
+                            <div class="contribution-item" data-key="project_contribution_vyacheslav_1">Да</div>
+                            <div class="contribution-item" data-key="project_contribution_vyacheslav_2">Хз</div>
+                            <div class="contribution-item" data-key="project_contribution_vyacheslav_3">Интересно</div>
+                        </div>
+                    </div>
+                    <div class="author-card">
+                        <div class="author-name" data-key="interesting_fact_1">Интересный факт 1</div>
+                        <div class="author-contributions">
+                            <div class="contributions-title" data-key="three_site">Трилогия сайтов:</div>
+                            <div class="contribution-item" data-key="three_site_fact_1">1. Полный сайт с функционалом</div>
+                            <div class="contribution-item" data-key="three_site_fact_2">2. Расписание с расширенным функционалом</div>
+                            <div class="contribution-item" data-key="three_site_fact_3">3. Варианты с расширенным функционалом</div>
+                        </div>
+                    </div>
+                    <div class="author-card">
+                        <div class="author-name" data-key="interesting_fact_2">Интересный факт 2</div>
+                        <div class="author-contributions">
+                            <div class="contributions-title" data-key="secret_function">Скрытые функции:</div>
+                            <div class="contribution-item" data-key="secret_function_fact_1">Смена языка: Русский и Английский (только тексты HTML)</div>
+                            <div class="contribution-item" data-key="secret_function_fact_2">Раньше вместо кнопок смены темы была одна кнопка с эмодзи</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="mobile-nav" aria-label="Мобильная навигация">
+    <button type="button" data-content-link="main" aria-label="Главное"><i class="fas fa-house"></i></button>
+    <button type="button" data-content-link="students" aria-label="Ученики"><i class="fas fa-user-graduate"></i></button>
+    <button type="button" data-content-link="teachers" aria-label="Учителя"><i class="fas fa-chalkboard-user"></i></button>
+    <button type="button" data-content-link="schedule" aria-label="Расписание"><i class="fas fa-calendar-days"></i></button>
+    <button type="button" data-content-link="textbooks" aria-label="Учебники"><i class="fas fa-book"></i></button>
+    <button type="button" data-content-link="books" aria-label="Книги"><i class="fas fa-book-open"></i></button>
+    <button type="button" data-content-link="oge" aria-label="ОГЭ"><i class="fas fa-graduation-cap"></i></button>
+    <button type="button" data-content-link="settings" aria-label="Настройки"><i class="fas fa-gear"></i></button>
+</nav>
+
+<div class="qr-panel qr-panel-mobile">
+    <div class="qr-panel-title" data-key="qr_title">Ссылка на сайт</div>
+    <div class="qr-panel-code"></div>
+    <button class="qr-close-btn" type="button" aria-label="Закрыть QR">×</button>
+</div>
+
+<!-- translations и data — как раньше -->
+<script src="translations/ru.js"></script>
+<script src="translations/en.js"></script>
+<script src="translations/cn.js"></script>
+<script src="translations/ar.js"></script>
+<script src="translations/ja.js"></script>
+
+<script src="data/teachers.js"></script>
+<script src="data/schedule.js"></script>
+<script src="data/students.js"></script>
+<script src="data/textbooks.js"></script>
+<script src="data/books.js"></script>
+<script src="data/oge.js"></script>
+
+<script src="script.js"></script>
+</body>
+</html>

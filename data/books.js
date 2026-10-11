@@ -1,0 +1,20 @@
+window.summerBooks = [
+    {title: "«Слово о полку Игореве»", author: "", read: false},
+    {title: "«Бедная Лиза»", author: "Н.М. Карамзин", read: false},
+    {title: "Баллады", author: "В.А. Жуковский", read: false},
+    {title: "«Горе от ума»", author: "А.С. Грибоедов", read: false},
+    {title: "«Медный всадник», «Южные поэмы», «Евгений Онегин»", author: "А.С. Пушкин", read: false},
+    {title: "«Герой нашего времени»", author: "М.Ю. Лермонтов", read: false},
+    {title: "«Шинель», «Невский проспект», «Мёртвые души»", author: "Н.В. Гоголь", read: false},
+    {title: "«Бедность не порок»", author: "А.Н. Островский", read: false},
+    {title: "«Белые ночи», «Бедные люди»", author: "Ф.М. Достоевский", read: false},
+    {title: "«Юность»", author: "Л.Н. Толстой", read: false},
+    {title: "«Тоска»", author: "А.П. Чехов", read: false},
+    {title: "«Тёмные аллеи»", author: "И.А. Бунин", read: false},
+    {title: "«Собачье сердце»", author: "М. Булгаков", read: false},
+    {title: "«Судьба человека»", author: "М. Шолохов", read: false},
+    {title: "«Матрёнин двор»", author: "А.И. Солженицын", read: false},
+    {title: "«Божественная комедия»", author: "Данте Алигьери", read: false},
+    {title: "«Гамлет»", author: "Шекспир Уильям", read: false},
+    {title: "«Фауст»", author: "Гёте Иоганн", read: false}
+];

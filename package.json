@@ -1,0 +1,22 @@
+{
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "Solyaris now in EXE",
+  "main": "main.js",
+  "scripts": {
+    "app:dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.example.myapp",
+    "win": {
+      "target": "nsis"
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "electron": "^44.4.5"
+  }
+}
